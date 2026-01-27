@@ -102,4 +102,47 @@ Analytics data is derived dynamically and not stored as separate entities.
 ---
 
 ## Project Structure
+ com.pawan.feedback.system
+ 
+├── entity
+
+├── dto
+
+├── serivce
+
+├── controller
+
+├── repository
+
+└── config
+
+Each module follows:
+- Controller  
+- Service  
+- Repository  
+- DTO  
+- Entity  
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Java 17+
+- Maven
+- MySQL / PostgreSQL (or any supported relational database)
+
+### Run Locally
+```bash
+# Clone repository
+git clone <repository-url>
+
+# Navigate to backend
+cd backend
+
+# Build the project
+mvn clean install
+
+# Run the application
+mvn spring-boot:run
 
