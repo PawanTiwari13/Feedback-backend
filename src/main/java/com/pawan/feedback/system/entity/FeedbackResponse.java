@@ -1,5 +1,7 @@
 package com.pawan.feedback.system.entity;
 
+import java.time.Instant;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,22 +13,24 @@ import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(
-    name = "batch_students",
-    uniqueConstraints = @UniqueConstraint(columnNames = {"batch_id", "student_id"})
+    name = "feedback_responses",
+    uniqueConstraints = @UniqueConstraint(columnNames = {"form_id", "student_id"})
 )
-public class BatchStudent {
+public class FeedbackResponse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "batch_id", nullable = false)
-    private Batch batch;
+    @JoinColumn(name = "form_id", nullable = false)
+    private FeedbackForm form;
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
     private User student;
+
+    private Instant submittedAt;
 
 	public Long getId() {
 		return id;
@@ -36,12 +40,12 @@ public class BatchStudent {
 		this.id = id;
 	}
 
-	public Batch getBatch() {
-		return batch;
+	public FeedbackForm getForm() {
+		return form;
 	}
 
-	public void setBatch(Batch batch) {
-		this.batch = batch;
+	public void setForm(FeedbackForm form) {
+		this.form = form;
 	}
 
 	public User getStudent() {
@@ -52,5 +56,16 @@ public class BatchStudent {
 		this.student = student;
 	}
 
+	public Instant getSubmittedAt() {
+		return submittedAt;
+	}
+
+	public void setSubmittedAt(Instant submittedAt) {
+		this.submittedAt = submittedAt;
+	}
+
+    // getters & setters
+    
+    
     
 }
