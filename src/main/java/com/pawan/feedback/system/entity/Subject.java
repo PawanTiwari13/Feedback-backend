@@ -1,5 +1,6 @@
 package com.pawan.feedback.system.entity;
 
+
 import jakarta.persistence.*;
 
 @Entity
@@ -11,13 +12,13 @@ public class Subject {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String subjectName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "teacher_id")
     private User teacher;
 
@@ -32,12 +33,12 @@ public class Subject {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     public Course getCourse() {
